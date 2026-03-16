@@ -1,0 +1,1501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Homegrown Business — Marie Assi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --terra: #c4622d;
+  --terra-dark: #a04e22;
+  --terra-pale: #f5e8df;
+  --cream: #faf6f0;
+  --cream-dark: #f0e8dc;
+  --olive: #6b7c4e;
+  --olive-light: #8a9d65;
+  --olive-pale: #edf0e6;
+  --ink: #1e1208;
+  --ink-mid: #3d2b1a;
+  --muted: #8a7060;
+  --border: #e0d0c0;
+  --border-light: #ede4d8;
+  --gold: #c9913a;
+  --gold-pale: #faf0e0;
+  --white: #ffffff;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  overflow-x: hidden;
+}
+
+.container { max-width: 1100px; margin: 0 auto; padding: 0 32px; }
+
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(250,246,240,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-light);
+  padding: 0 32px;
+  height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: 0.01em;
+}
+.nav-logo span { color: var(--terra); }
+.nav-links { display: flex; align-items: center; gap: 28px; }
+.nav-link {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+.nav-link:hover { color: var(--terra); }
+.nav-btn {
+  background: var(--terra);
+  color: white;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 9px 20px;
+  border-radius: 3px;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: background 0.2s;
+}
+.nav-btn:hover { background: var(--terra-dark); }
+
+/* ─── EYEBROW ─── */
+.ey { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+.ey-line { flex: 1; height: 1px; background: var(--border); max-width: 60px; }
+.ey-txt {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--terra);
+}
+.h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 500;
+  line-height: 1.18;
+  color: var(--ink);
+}
+.h2 em { font-style: italic; color: var(--terra); }
+.body-t { font-size: 0.95rem; color: var(--muted); line-height: 1.75; font-weight: 300; }
+.mu { max-width: 560px; }
+.section-header { margin-bottom: 56px; }
+
+/* ─── REVEAL ─── */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.d1 { transition-delay: 0.1s; }
+.d2 { transition-delay: 0.2s; }
+.d3 { transition-delay: 0.3s; }
+.d4 { transition-delay: 0.4s; }
+.d5 { transition-delay: 0.5s; }
+
+/* ─── BTN ─── */
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--terra); color: white;
+  font-size: 0.82rem; font-weight: 600;
+  padding: 14px 28px; border-radius: 3px;
+  text-decoration: none; letter-spacing: 0.05em; text-transform: uppercase;
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-primary:hover { background: var(--terra-dark); transform: translateY(-1px); }
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent; color: var(--ink);
+  font-size: 0.82rem; font-weight: 500;
+  padding: 13px 28px; border-radius: 3px;
+  border: 1.5px solid var(--border);
+  text-decoration: none; letter-spacing: 0.04em;
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-outline:hover { border-color: var(--terra); color: var(--terra); }
+
+/* ─── HERO ─── */
+.hero-section {
+  min-height: 100vh;
+  padding: 120px 0 80px;
+  background: var(--cream);
+  position: relative;
+  overflow: hidden;
+}
+.hero-section::before {
+  content: '';
+  position: absolute; top: -100px; right: -200px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(196,98,45,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-section::after {
+  content: '';
+  position: absolute; bottom: -80px; left: -100px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(107,124,78,0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 60px;
+  align-items: center;
+}
+.hero-label {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--terra);
+  background: var(--terra-pale);
+  padding: 6px 14px;
+  border-radius: 2px;
+  margin-bottom: 24px;
+  border: 1px solid rgba(196,98,45,0.2);
+}
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--ink);
+  margin-bottom: 24px;
+}
+.hero-title em { font-style: italic; color: var(--terra); }
+.hero-body {
+  font-size: 1rem;
+  color: var(--muted);
+  line-height: 1.75;
+  font-weight: 300;
+  max-width: 500px;
+  margin-bottom: 36px;
+}
+.hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 52px; }
+.hero-stats {
+  display: flex; gap: 36px;
+  padding-top: 36px;
+  border-top: 1px solid var(--border);
+}
+.hs-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--terra);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.hs-label { font-size: 0.72rem; color: var(--muted); line-height: 1.4; font-weight: 400; }
+
+/* Hero card */
+.hero-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(30,18,8,0.08);
+}
+.hc-top {
+  background: var(--terra);
+  padding: 22px 24px;
+}
+.hc-tag {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 6px;
+}
+.hc-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  color: white;
+  font-weight: 500;
+}
+.hc-rows { padding: 8px 0; }
+.hc-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 24px;
+  border-bottom: 1px solid var(--border-light);
+  text-decoration: none;
+  transition: background 0.15s;
+}
+.hc-row:last-child { border-bottom: none; }
+.hc-row:hover { background: var(--cream); }
+.hc-row.featured { background: var(--terra-pale); }
+.hc-name {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 2px;
+}
+.hc-streams { font-size: 0.72rem; color: var(--muted); }
+.hc-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--terra);
+  text-align: right;
+}
+.hc-note {
+  font-size: 0.7rem;
+  color: var(--muted);
+  padding: 14px 24px;
+  background: var(--cream);
+  border-top: 1px solid var(--border-light);
+  text-align: center;
+}
+
+/* ─── PROBLEM ─── */
+.problem-section {
+  padding: 90px 0;
+  background: var(--ink);
+}
+.problem-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-top: 20px;
+}
+.prob-head {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+}
+.prob-head.bad { color: rgba(255,255,255,0.35); border-bottom: 1px solid rgba(255,255,255,0.1); }
+.prob-head.good { color: var(--terra); border-bottom: 1px solid rgba(196,98,45,0.3); }
+.prob-items { display: flex; flex-direction: column; gap: 10px; }
+.prob-item {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  padding: 12px 16px;
+  border-radius: 4px;
+}
+.prob-item.bad {
+  background: rgba(255,255,255,0.04);
+  color: rgba(255,255,255,0.5);
+  border-left: 2px solid rgba(255,255,255,0.1);
+}
+.prob-item.good {
+  background: rgba(196,98,45,0.1);
+  color: rgba(255,255,255,0.85);
+  border-left: 2px solid var(--terra);
+}
+.problem-section .h2 { color: white; }
+.problem-section .h2 em { color: var(--terra); }
+.problem-section .ey-txt { color: var(--terra); }
+.problem-section .ey-line { background: rgba(255,255,255,0.15); }
+
+/* ─── MAGAZINE ─── */
+.mag-section { padding: 90px 0; background: var(--olive); }
+.mag-section .h2 { color: white; }
+.mag-section .h2 em { color: rgba(255,255,255,0.7); font-style: italic; }
+.mag-section .ey-txt { color: rgba(255,255,255,0.7); }
+.mag-section .ey-line { background: rgba(255,255,255,0.25); }
+.mag-inner { display: grid; grid-template-columns: 1fr 360px; gap: 60px; align-items: center; margin-top: 20px; }
+.mag-body { font-size: 0.92rem; color: rgba(255,255,255,0.7); line-height: 1.75; font-weight: 300; margin-bottom: 24px; }
+.mag-features { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+.mag-feat {
+  font-size: 0.84rem;
+  color: rgba(255,255,255,0.85);
+  padding: 10px 14px 10px 36px;
+  position: relative;
+  background: rgba(255,255,255,0.06);
+  border-radius: 3px;
+}
+.mag-feat::before {
+  content: '✓';
+  position: absolute; left: 12px; top: 10px;
+  font-size: 0.75rem;
+  color: var(--terra-pale);
+  font-weight: 700;
+}
+.mag-note { font-size: 0.78rem; color: rgba(255,255,255,0.4); font-style: italic; }
+
+/* Magazine mock */
+.mag-mock {
+  background: white;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  aspect-ratio: 3/4;
+  position: relative;
+}
+.mm-bg {
+  position: absolute; inset: 0;
+  background: linear-gradient(160deg, var(--terra-pale) 0%, var(--cream-dark) 60%, var(--cream) 100%);
+}
+.mm-content { position: relative; z-index: 1; padding: 28px 22px; height: 100%; display: flex; flex-direction: column; }
+.mm-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: auto; }
+.mm-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--terra);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.mm-issue { font-size: 0.58rem; color: var(--muted); text-align: right; line-height: 1.4; }
+.mm-mid {
+  text-align: center;
+  padding: 20px 0;
+}
+.mm-cover-label { font-size: 0.5rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.mm-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: var(--ink);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.mm-sub {
+  font-size: 0.62rem;
+  color: var(--terra);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.mm-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.82rem;
+  font-style: italic;
+  color: var(--muted);
+  line-height: 1.5;
+  text-align: center;
+  padding: 0 12px;
+  margin-bottom: 16px;
+}
+.mm-bottom { border-top: 1px solid var(--border); padding-top: 12px; display: flex; justify-content: space-between; align-items: center; }
+.mm-b-left { font-size: 0.52rem; color: var(--muted); }
+.mm-badge { background: var(--terra); color: white; font-size: 0.45rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 3px 7px; border-radius: 1px; }
+.mm-strips { display: flex; gap: 6px; margin: 14px 0; }
+.mm-strip { flex: 1; height: 2px; background: var(--terra); opacity: 0.3; border-radius: 1px; }
+.mm-strip:nth-child(2) { opacity: 0.6; }
+.mm-strip:nth-child(3) { opacity: 1; }
+
+/* ─── STRATEGIES ─── */
+.strategies-section { padding: 90px 0; background: var(--cream); }
+.avenues-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.avenue {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 28px 24px;
+  transition: box-shadow 0.25s, transform 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+.avenue::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--terra);
+  transform: scaleX(0);
+  transition: transform 0.3s;
+  transform-origin: left;
+}
+.avenue:hover { box-shadow: 0 8px 32px rgba(30,18,8,0.08); transform: translateY(-2px); }
+.avenue:hover::before { transform: scaleX(1); }
+.avenue-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: var(--terra-pale);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.avenue-icon { font-size: 1.6rem; margin-bottom: 10px; display: block; }
+.avenue-label {
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--terra);
+  margin-bottom: 6px;
+}
+.avenue-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+.avenue-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.65; margin-bottom: 16px; }
+.avenue-earning {
+  background: var(--terra-pale);
+  border-radius: 4px;
+  padding: 10px 14px;
+}
+.ae-label { font-size: 0.6rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 2px; }
+.ae-amount { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 600; color: var(--terra); }
+
+/* ─── TIERS ─── */
+.tiers-section { padding: 90px 0; background: var(--cream-dark); }
+.tiers-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(30,18,8,0.08);
+}
+.tier-col { display: flex; flex-direction: column; background: white; }
+.tier-col.featured { background: white; border-left: 1px solid var(--border); border-right: 1px solid var(--border); }
+.tier-col.premium { background: white; border-left: 1px solid var(--border); }
+.tier-head { padding: 28px 24px; border-bottom: 1px solid var(--border); }
+.tier-col.featured .tier-head { background: var(--terra); border-bottom: none; }
+.tier-col.premium .tier-head { background: var(--ink); border-bottom: none; }
+.tier-badge {
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.tier-col.featured .tier-badge { color: rgba(255,255,255,0.55); }
+.tier-col.premium .tier-badge { color: var(--gold); }
+.tier-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.tier-col.featured .tier-name, .tier-col.premium .tier-name { color: white; }
+.tier-setup {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--terra);
+}
+.tier-col.featured .tier-setup, .tier-col.premium .tier-setup { color: rgba(255,255,255,0.9); }
+.tier-retainer { font-size: 0.7rem; color: var(--muted); margin-top: 2px; }
+.tier-col.featured .tier-retainer, .tier-col.premium .tier-retainer { color: rgba(255,255,255,0.45); }
+.tier-count {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-top: 10px;
+  background: var(--terra-pale);
+  border-radius: 3px;
+  padding: 5px 10px;
+}
+.tier-col.featured .tier-count, .tier-col.premium .tier-count { background: rgba(255,255,255,0.15); }
+.tc-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--terra);
+}
+.tier-col.featured .tc-num, .tier-col.premium .tc-num { color: white; }
+.tc-txt {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.tier-col.featured .tc-txt, .tier-col.premium .tc-txt { color: rgba(255,255,255,0.55); }
+.tier-body { padding: 20px 24px; flex: 1; }
+.tier-cat {
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--terra);
+  margin: 16px 0 8px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+.tier-cat:first-child { margin-top: 4px; padding-top: 0; border-top: none; }
+.tier-row {
+  display: flex; gap: 9px; align-items: flex-start;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(224,208,192,0.4);
+}
+.tier-row:last-child { border-bottom: none; }
+.tr-ico {
+  width: 17px; height: 17px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  font-size: 0.58rem;
+  font-weight: 700;
+  margin-top: 1px;
+}
+.tr-ico.y { background: var(--terra-pale); color: var(--terra); border: 1.5px solid rgba(196,98,45,0.3); }
+.tr-ico.n { background: #f5f5f5; color: #ccc; border: 1.5px solid #eee; }
+.tr-text { font-size: 0.8rem; color: var(--ink-mid); line-height: 1.45; }
+.tr-text.off { color: #c8c8c8; text-decoration: line-through; }
+.tr-text strong { color: var(--ink); font-weight: 600; }
+.tier-foot { padding: 20px 24px; border-top: 1px solid var(--border); }
+.tier-potential {
+  background: var(--terra-pale);
+  border: 1px solid rgba(196,98,45,0.2);
+  border-radius: 5px;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+}
+.tier-col.premium .tier-potential {
+  background: var(--ink);
+  border-color: rgba(255,255,255,0.08);
+}
+.tp-label {
+  font-size: 0.56rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--terra);
+  margin-bottom: 3px;
+}
+.tier-col.premium .tp-label { color: rgba(255,255,255,0.4); }
+.tp-amount {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--terra);
+}
+.tier-col.premium .tp-amount { color: var(--terra-pale); }
+.tp-note { font-size: 0.68rem; color: var(--muted); margin-top: 2px; }
+.tier-col.premium .tp-note { color: rgba(255,255,255,0.3); }
+.tier-cta {
+  display: block;
+  text-align: center;
+  padding: 13px;
+  border-radius: 3px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.tier-cta-outline {
+  border: 1.5px solid var(--border);
+  color: var(--ink);
+}
+.tier-cta-outline:hover { border-color: var(--terra); color: var(--terra); }
+.tier-cta-solid {
+  background: var(--terra);
+  color: white;
+}
+.tier-cta-solid:hover { background: var(--terra-dark); }
+.tier-cta-dark {
+  background: white;
+  color: var(--ink);
+}
+.tier-cta-dark:hover { background: var(--terra-pale); }
+
+/* ─── RETAINER ─── */
+.retainer-section { padding: 90px 0; background: var(--terra); }
+.retainer-section .h2 { color: white; }
+.retainer-section .h2 em { color: rgba(255,255,255,0.7); }
+.retainer-section .ey-txt { color: rgba(255,255,255,0.7); }
+.retainer-section .ey-line { background: rgba(255,255,255,0.25); }
+.ret-cards { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin-top: 44px; }
+.ret-card {
+  background: rgba(255,255,255,0.92);
+  border-radius: 8px;
+  padding: 24px;
+  text-align: center;
+  transition: all 0.25s;
+}
+.ret-card:hover { background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.15); transform: translateY(-2px); }
+.ret-icon { font-size: 1.6rem; margin-bottom: 12px; }
+.ret-title { font-weight: 700; font-size: 0.88rem; color: var(--ink); margin-bottom: 8px; }
+.ret-text { font-size: 0.78rem; color: var(--muted); line-height: 1.6; }
+.ret-note {
+  background: rgba(0,0,0,0.12);
+  border-radius: 8px;
+  padding: 28px 36px;
+  margin-top: 28px;
+  display: flex; gap: 20px; align-items: flex-start;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.rn-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+.rn-text { font-size: 0.88rem; color: rgba(255,255,255,0.82); line-height: 1.65; }
+
+/* ─── ROI ─── */
+.roi-section { padding: 90px 0; background: var(--ink); }
+.roi-section .h2 { color: white; }
+.roi-section .h2 em { color: var(--terra); }
+.roi-section .ey-txt { color: var(--terra); }
+.roi-section .ey-line { background: rgba(255,255,255,0.15); }
+.roi-section .body-t { color: rgba(255,255,255,0.55); }
+.roi-tabs { display: flex; gap: 8px; margin: 28px 0; flex-wrap: wrap; }
+.roi-tab {
+  padding: 9px 20px;
+  border-radius: 3px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  border: 1.5px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.5);
+  background: transparent;
+  transition: all 0.2s;
+}
+.roi-tab.active { background: var(--terra); border-color: var(--terra); color: white; }
+.roi-panel { display: none; }
+.roi-panel.active {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 32px;
+}
+.rsc-head {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 16px;
+}
+.rsc-title { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: white; margin-bottom: 4px; }
+.rsc-sub { font-size: 0.78rem; color: rgba(255,255,255,0.4); }
+.rsc-streams { display: flex; flex-direction: column; gap: 8px; }
+.rs {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 12px 16px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.rs.locked { opacity: 0.35; }
+.rs-name { font-size: 0.82rem; color: rgba(255,255,255,0.85); font-weight: 500; }
+.rs-note { font-size: 0.68rem; color: rgba(255,255,255,0.35); margin-top: 2px; }
+.rs-amount { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; color: var(--terra); white-space: nowrap; margin-left: 16px; }
+.rsc-total {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px;
+  background: var(--terra);
+  border-radius: 4px;
+  margin-top: 12px;
+}
+.rsc-total-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.7); }
+.rsc-total-amount { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 600; color: white; }
+.ri-box {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 28px;
+}
+.ri-title { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: white; margin-bottom: 20px; }
+.ri-points { display: flex; flex-direction: column; gap: 14px; margin-bottom: 24px; }
+.ri-point { display: flex; gap: 12px; font-size: 0.84rem; color: rgba(255,255,255,0.7); line-height: 1.55; }
+.ri-point strong { color: white; }
+.ri-dot { width: 6px; height: 6px; background: var(--terra); border-radius: 50%; flex-shrink: 0; margin-top: 7px; }
+.ri-avail {
+  background: rgba(196,98,45,0.15);
+  border: 1px solid rgba(196,98,45,0.25);
+  border-radius: 4px;
+  padding: 16px;
+}
+.ria-label { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--terra); margin-bottom: 6px; }
+.ria-text { font-size: 0.8rem; color: rgba(255,255,255,0.6); line-height: 1.6; }
+
+/* ─── BUILD ─── */
+.build-section { padding: 90px 0; background: var(--cream); }
+.build-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.build-item {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 28px 24px;
+}
+.bi-icon { font-size: 1.6rem; margin-bottom: 12px; }
+.bi-title { font-weight: 700; font-size: 0.92rem; color: var(--ink); margin-bottom: 10px; }
+.bi-text { font-size: 0.8rem; color: var(--muted); line-height: 1.65; }
+
+/* ─── PROCESS ─── */
+.process-section { padding: 90px 0; background: var(--terra-pale); }
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+.ps {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 28px 22px;
+  position: relative;
+}
+.ps-num {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  background: var(--terra-pale);
+  color: var(--terra);
+  border: 2px solid rgba(196,98,45,0.3);
+  margin-bottom: 16px;
+}
+.ps-title { font-weight: 700; font-size: 0.92rem; color: var(--ink); margin-bottom: 8px; }
+.ps-text { font-size: 0.78rem; color: var(--muted); line-height: 1.6; margin-bottom: 14px; }
+.ps-time {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--terra);
+}
+
+/* ─── CTA ─── */
+.cta-section {
+  padding: 100px 0;
+  background: var(--ink);
+  text-align: center;
+}
+.cta-section .h2 { color: white; }
+.cta-section .h2 em { color: var(--terra); }
+.cta-section .ey-txt { color: var(--terra); }
+.cta-section .ey-line { background: rgba(255,255,255,0.15); }
+.cta-section .body-t { color: rgba(255,255,255,0.55); margin: 16px auto 36px; max-width: 480px; text-align: center; }
+.cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.btn-white {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: white; color: var(--ink);
+  font-size: 0.82rem; font-weight: 600;
+  padding: 14px 28px; border-radius: 3px;
+  text-decoration: none; letter-spacing: 0.05em; text-transform: uppercase;
+  transition: all 0.2s;
+}
+.btn-white:hover { background: var(--terra-pale); }
+.btn-outline-lt {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent; color: rgba(255,255,255,0.7);
+  font-size: 0.82rem; font-weight: 500;
+  padding: 13px 28px; border-radius: 3px;
+  border: 1.5px solid rgba(255,255,255,0.2);
+  text-decoration: none; letter-spacing: 0.04em;
+  transition: all 0.2s;
+}
+.btn-outline-lt:hover { border-color: var(--terra); color: var(--terra); }
+
+/* ─── FOOTER ─── */
+footer {
+  padding: 32px;
+  text-align: center;
+  font-size: 0.72rem;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+  background: var(--cream);
+}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:960px){
+  .hero-inner,
+  .problem-grid,
+  .avenues-grid,
+  .tiers-grid,
+  .ret-cards,
+  .roi-panel.active,
+  .build-grid,
+  .process-steps,
+  .mag-inner { grid-template-columns: 1fr; }
+  .hero-section { padding-top: 100px; }
+  .nav-links .nav-link { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Homegrown<span>Assi</span></div>
+  <div class="nav-links">
+    <a href="#strategies" class="nav-link">9 Strategies</a>
+    <a href="#tiers" class="nav-link">Packages</a>
+    <a href="#roi" class="nav-link">The Numbers</a>
+    <a href="#cta" class="nav-btn">Book a Call</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero-section">
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-label reveal">Prepared exclusively for Marie Assi</div>
+        <h1 class="hero-title reveal d1">Your audience<br>is already there.<br><em>Now we build<br>the business.</em></h1>
+        <p class="hero-body reveal d2">You've built something rare — 150,000 people who follow you for who you are. Your love of cooking, your lifestyle, your energy. Now it's time to turn that attention into a real business that earns on your terms, forever.</p>
+        <div class="hero-ctas reveal d3">
+          <a href="#tiers" class="btn-primary">See the Packages</a>
+          <a href="#strategies" class="btn-outline">The 9 Strategies →</a>
+        </div>
+        <div class="hero-stats reveal d4">
+          <div>
+            <div class="hs-num">£47k+</div>
+            <div class="hs-label">Monthly potential<br>(Empire package)</div>
+          </div>
+          <div>
+            <div class="hs-num">9</div>
+            <div class="hs-label">Monetisation strategies<br>to choose from</div>
+          </div>
+          <div>
+            <div class="hs-num">150k</div>
+            <div class="hs-label">Warm audience<br>ready from day one</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero card -->
+      <div class="hero-card reveal d2">
+        <div class="hc-top">
+          <div class="hc-tag">Investment & Packages</div>
+          <div class="hc-title">The Homegrown Business</div>
+        </div>
+        <div class="hc-rows">
+          <a href="#tiers" class="hc-row">
+            <div>
+              <div class="hc-name">The Homegrown</div>
+              <div class="hc-streams">Choose 3 strategies</div>
+            </div>
+            <div class="hc-price">£6,000 + £797/mo</div>
+          </a>
+          <a href="#tiers" class="hc-row featured">
+            <div>
+              <div class="hc-name">The Brand</div>
+              <div class="hc-streams">Choose 6 strategies</div>
+            </div>
+            <div class="hc-price">£10,000 + £997/mo</div>
+          </a>
+          <a href="#tiers" class="hc-row">
+            <div>
+              <div class="hc-name">The Empire</div>
+              <div class="hc-streams">All 9 strategies</div>
+            </div>
+            <div class="hc-price">£18,000 + £1,497/mo</div>
+          </a>
+        </div>
+        <div class="hc-note">All packages built and managed for you. 2–4 week delivery.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem-section">
+  <div class="container">
+    <div class="ey reveal"><div class="ey-line"></div><div class="ey-txt">The Opportunity</div></div>
+    <h2 class="h2 reveal d1">You have the audience.<br><em>You just need the business behind it.</em></h2>
+    <div class="problem-grid" style="margin-top:48px">
+      <div>
+        <div class="prob-head bad">Where most creators get stuck</div>
+        <div class="prob-items">
+          <div class="prob-item bad">Income tied to one platform — one algorithm change and it's gone</div>
+          <div class="prob-item bad">No brand asset being built — followers don't compound into wealth</div>
+          <div class="prob-item bad">Audience growth with nothing to sell them beyond the content itself</div>
+          <div class="prob-item bad">No real business — just attention with nowhere to go</div>
+        </div>
+      </div>
+      <div>
+        <div class="prob-head good">What the HomegrownAssi Business creates</div>
+        <div class="prob-items">
+          <div class="prob-item good">Nine income streams built on a brand you own — forever</div>
+          <div class="prob-item good">A real business from your existing audience, from day one</div>
+          <div class="prob-item good">Products, courses and a community that earn while you live your life</div>
+          <div class="prob-item good">Built and managed for you — you just show up and be Assi</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAGAZINE -->
+<section class="mag-section">
+  <div class="container">
+    <div class="mag-inner">
+      <div>
+        <div class="ey reveal"><div class="ey-line"></div><div class="ey-txt">Your Lead Magnet</div></div>
+        <h2 class="h2 reveal d1">Every follower gets their<br>own <em>Assi Edit.</em></h2>
+        <p class="mag-body reveal d2">Before anyone buys a course, joins your community, or books a coaching call — they need to fall deeper into your world. The Assi Edit is your premium digital lifestyle magazine. Your recipes, your story, your brand. It's the most powerful way to turn a follower into a customer.</p>
+        <div class="mag-features reveal d3">
+          <div class="mag-feat">Bespoke digital lifestyle magazine built around your brand and recipes</div>
+          <div class="mag-feat">Distributed to your audience as the free gift that starts every customer relationship</div>
+          <div class="mag-feat">New edition every quarter — keeps your audience engaged and coming back</div>
+          <div class="mag-feat">Included in every package — this is the first thing your audience receives</div>
+        </div>
+        <p class="mag-note reveal d4">Optional: physical print run for press, brand partnerships and events.</p>
+      </div>
+
+      <!-- Magazine mock -->
+      <div class="mag-mock reveal d2">
+        <div class="mm-bg"></div>
+        <div class="mm-content">
+          <div class="mm-top">
+            <div class="mm-brand">Assi Edit</div>
+            <div class="mm-issue">Issue 01<br>2025</div>
+          </div>
+          <div class="mm-strips">
+            <div class="mm-strip"></div>
+            <div class="mm-strip"></div>
+            <div class="mm-strip"></div>
+          </div>
+          <div class="mm-mid">
+            <div class="mm-cover-label">Cover</div>
+            <div class="mm-name">Marie<br>Assi</div>
+            <div class="mm-sub" style="margin-top:8px">Chef · Creator · Brand</div>
+          </div>
+          <p class="mm-quote">"I didn't build an audience. I built a community — and now we're building a business."</p>
+          <div class="mm-bottom">
+            <div class="mm-b-left">HomegrownAssi · 2025</div>
+            <div class="mm-badge">Cover Feature</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRATEGIES -->
+<section class="strategies-section" id="strategies">
+  <div class="container">
+    <div class="section-header">
+      <div class="ey reveal" style="justify-content:center"><div class="ey-line"></div><div class="ey-txt">The 9 Monetisation Strategies</div><div class="ey-line"></div></div>
+      <h2 class="h2 reveal d1" style="text-align:center">Nine ways your lifestyle<br><em>creates income at scale.</em></h2>
+      <p class="body-t mu reveal d2" style="text-align:center;margin:12px auto 0">Choose 3, 6 or all 9. Every strategy is built around the HomegrownAssi brand. The package you choose determines how many we activate from day one.</p>
+    </div>
+    <div class="avenues-grid">
+
+      <div class="avenue reveal">
+        <div class="avenue-num">01</div>
+        <span class="avenue-icon">📖</span>
+        <div class="avenue-label">Strategy 01 · Digital Products</div>
+        <div class="avenue-title">The Assi Kitchen Collection</div>
+        <div class="avenue-desc">Beautifully designed PDF recipe books, weekly meal plans, and grocery guides — all branded HomegrownAssi. Priced between £17–£47. Built from your most viral recipes and sold passively while you sleep. Your followers already love your cooking — this gives them something to own forever.</div>
+        <div class="avenue-earning"><div class="ae-label">Example at 2% of 150k followers</div><div class="ae-amount">£3,000+/mo passive</div></div>
+      </div>
+
+      <div class="avenue reveal d1">
+        <div class="avenue-num">02</div>
+        <span class="avenue-icon">🎓</span>
+        <div class="avenue-label">Strategy 02 · Signature Course</div>
+        <div class="avenue-title">Cook With Assi</div>
+        <div class="avenue-desc">Your full signature cooking course — video lessons in your kitchen, your style, your recipes. Mid-ticket at £197 and a premium version at £397 with personalised meal plans. Built once, sells forever. This transforms your reels into a curriculum people pay to access.</div>
+        <div class="avenue-earning"><div class="ae-label">Example at 2% conversion</div><div class="ae-amount">£5,000+/mo combined</div></div>
+      </div>
+
+      <div class="avenue reveal d2">
+        <div class="avenue-num">03</div>
+        <span class="avenue-icon">💛</span>
+        <div class="avenue-label">Strategy 03 · Group Coaching</div>
+        <div class="avenue-title">The Assi Method</div>
+        <div class="avenue-desc">A 3-month group coaching programme around food, body confidence and the homegrown lifestyle. Up to 20 women at £197/month. Monthly live sessions, private community, weekly check-ins. This is where your audience gets close access to you — and pays for the privilege.</div>
+        <div class="avenue-earning"><div class="ae-label">At capacity (20 members)</div><div class="ae-amount">£3,940/mo recurring</div></div>
+      </div>
+
+      <div class="avenue reveal">
+        <div class="avenue-num">04</div>
+        <span class="avenue-icon">👩‍🍳</span>
+        <div class="avenue-label">Strategy 04 · Membership</div>
+        <div class="avenue-title">The Homegrown Club</div>
+        <div class="avenue-desc">Your private monthly membership community on Skool or Circle. New recipes every week, monthly live cook-along, exclusive content and a group of women who live the same lifestyle as you. £19–£37/month. 1,000 members is realistic given your existing audience size — and that's life-changing recurring income.</div>
+        <div class="avenue-earning"><div class="ae-label">1,000 members × £29/mo</div><div class="ae-amount">£29,000/mo recurring</div></div>
+      </div>
+
+      <div class="avenue reveal d1">
+        <div class="avenue-num">05</div>
+        <span class="avenue-icon">🤝</span>
+        <div class="avenue-label">Strategy 05 · Brand Partnerships</div>
+        <div class="avenue-title">Assi × Brand Deals</div>
+        <div class="avenue-desc">A professional media kit, brand partnership page and outreach strategy to attract food brands, kitchen equipment, plus-size fashion, Dubai lifestyle and home brands. With 150k followers and 70k reel views you can command £1,500–£5,000 per post. We position you as a premium creator, not just an influencer.</div>
+        <div class="avenue-earning"><div class="ae-label">2–3 deals/month at £2,500 avg</div><div class="ae-amount">£5,000–£7,500/mo</div></div>
+      </div>
+
+      <div class="avenue reveal d2">
+        <div class="avenue-num">06</div>
+        <span class="avenue-icon">🎤</span>
+        <div class="avenue-label">Strategy 06 · Live Events</div>
+        <div class="avenue-title">Assi's Cook-Along Masterclass</div>
+        <div class="avenue-desc">A quarterly live online cooking event. 100 seats at £47. You cook, they follow along live. Recording sold afterwards. Low prep, high community impact, strong income. Each event deepens loyalty and feeds your membership. We handle registration, payment and replay distribution.</div>
+        <div class="avenue-earning"><div class="ae-label">Per masterclass at 100 seats</div><div class="ae-amount">£4,700 / quarter</div></div>
+      </div>
+
+      <div class="avenue reveal">
+        <div class="avenue-num">07</div>
+        <span class="avenue-icon">🛒</span>
+        <div class="avenue-label">Strategy 07 · Merchandise</div>
+        <div class="avenue-title">Homegrown Merch</div>
+        <div class="avenue-desc">Branded kitchen and lifestyle products — aprons, tote bags, spice kits and printed recipe cards — all under the HomegrownAssi brand. Print-on-demand via Printful or Printify means zero upfront cost. A physical cookbook is the natural next step. Merch turns brand love into tangible products people use daily.</div>
+        <div class="avenue-earning"><div class="ae-label">Passive product revenue</div><div class="ae-amount">£1,000–£3,000+/mo</div></div>
+      </div>
+
+      <div class="avenue reveal d1">
+        <div class="avenue-num">08</div>
+        <span class="avenue-icon">🎬</span>
+        <div class="avenue-label">Strategy 08 · YouTube</div>
+        <div class="avenue-title">Assi on YouTube</div>
+        <div class="avenue-desc">Full-length cooking videos, day-in-my-life content and meal prep series on YouTube. Ad revenue + affiliate commissions from Amazon kitchen equipment, cookware and food brands. A well-run YouTube channel extends your reach to a completely new algorithm, compounds over time and feeds all other strategies with warm traffic.</div>
+        <div class="avenue-earning"><div class="ae-label">Primary purpose</div><div class="ae-amount">Long-term brand asset</div></div>
+      </div>
+
+      <div class="avenue reveal d2">
+        <div class="avenue-num">09</div>
+        <span class="avenue-icon">✦</span>
+        <div class="avenue-label">Strategy 09 · Bespoke</div>
+        <div class="avenue-title">Your Custom Strategy</div>
+        <div class="avenue-desc">The 9th strategy is yours to define. A Dubai pop-up dinner experience. A plus-size fashion collaboration. A food blog with SEO and affiliate income. A licensing deal with a food brand. You bring the vision — or we help you design one — and we build it around who you are and where you want to go.</div>
+        <div class="avenue-earning"><div class="ae-label">Tailored to your vision</div><div class="ae-amount">Bespoke pricing</div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TIERS -->
+<section class="tiers-section" id="tiers">
+  <div class="container">
+    <div class="section-header" style="text-align:center">
+      <div class="ey reveal" style="justify-content:center"><div class="ey-line"></div><div class="ey-txt">The Packages</div><div class="ey-line"></div></div>
+      <h2 class="h2 reveal d1">One brand. Nine income streams.<br><em>You choose how fast you grow.</em></h2>
+      <p class="body-t mu reveal d2" style="text-align:center;margin:12px auto 0;max-width:500px">Every package gives you a fully built and managed HomegrownAssi business. The difference is how many strategies are live from day one.</p>
+    </div>
+    <div class="tiers-grid reveal d1">
+
+      <!-- HOMEGROWN -->
+      <div class="tier-col">
+        <div class="tier-head">
+          <div class="tier-badge">The Homegrown</div>
+          <div class="tier-name">Homegrown</div>
+          <div class="tier-setup">£6,000 setup</div>
+          <div class="tier-retainer">+ £797/month management</div>
+          <div class="tier-count"><span class="tc-num">3</span><span class="tc-txt">strategies of your choice</span></div>
+        </div>
+        <div class="tier-body">
+          <div class="tier-cat">Lead Magnet</div>
+          <div class="tier-row"><div class="tr-ico y">✓</div><div class="tr-text">The Assi Edit — your digital magazine</div></div>
+          <div class="tier-row"><div class="tr-ico y">✓</div><div class="tr-text">Email capture + welcome sequence</div></div>
+          <div class="tier-cat">Your 3 Strategies</div>
+          <div class="tier-row"><div class="tr-ico y">✓</div><div class="tr-text">Strategy 1</div></div>
+          <div class="tier-row"><div class="tr-ico y">✓</div><div class="tr-text">Strategy 2</div></div>
+          <div class="tier-row"><div class="tr-ico y">✓</div><div class="tr-text">Strategy 3</div></div>
+          <div class="tier-cat">Technology</div>
+          <div class="tier-row"><div class="tr-ico y">✓</div><div class="tr-text">HomegrownAssi website built</div></div>
+          <div class="tier-row"><div class="tr-ico y">✓</div><div class="tr-text">Dedicated pages per strategy</div></div>
+          <div class="tier-row"><div class="tr-ico y">✓</div><div class="tr-text">CRM & automation setup</div></div>
+          <div class="tier-row"><div class="tr-ico n">–</div><div class="tr-text off">AI chatbot (website)</div></div>
+          <div class="tier-row"><div class="tr-ico n">–</div><div class="tr-text off">AI assistant (WhatsApp 24/7)</div></div>
+          <div class="tier-cat">Management</div>
+          <div class="tier-row"><div class="tr-ico y">✓</div><div class="tr-text">Dedicated growth partner</div></div>
+          <div class="tier-row"><div class="tr-ico y">✓</div><div class="tr-text">Monthly strategy calls</div></div>
+          <div class="tier-row"><div class="tr-ico y">✓</div><div class="tr-text">Email marketing & design</div></div>
+        </div>
+        <div class="tier-foot">
+          <div class="tier-potential">
+            <div class="tp-label">Monthly potential</div>
+            <div class="tp-amount">£8,000+/mo</div>
+            <div class="tp-note">Based on 3 strategies with your existing 150k audience</div>
+          </div>
+          <a href="#cta" class="tier-cta tier-cta-outline">Get Started</a>
+        </div>
+      </div>
+
+      <!-- THE BRAND -->
+      <div class="tier-col featured">
+        <div class="tier-head">
+          <div class="tier-badge">The Brand — Most Popular</div>
+          <div class="tier-name">Brand</div>
+          <div class="tier-setup">£10,000 setup</div>
+          <div class="tier-retainer">+ £997/month management</div>
+          <div class="tier-count"><span class="tc-num">6</span><span class="tc-txt">strategies of your choice</span></div>
+        </div>
+        <div class="tier-body">
+          <div class="tier-cat">Lead Magnet</div>
+          <div class="tier-row"><div class="tr-ico y">✓</div><div class="tr-text">The Assi Edit — your digital magazine</div></div>
+          <div class="tier-row"><div class="tr-ico y">✓</div><div class="tr-text">Email capture + full nurture sequences</div></div>
+          <div class="tier-cat">Your 6 Strategies</div>
+          <div class="tier-row"><div class="tr-ico y">✓</div><div class="tr-text">Strategy 1</div></div>
+          <div class="tier-row"><div class="tr-ico y">✓</div><div class="tr-text">Strategy 2</div></div>
+          <div class="tier-row"><div class="tr-ico y">✓</div><div class="tr-text">Strategy 3</div></div>
+          <div class="tier-row"><div class="tr-ico y">✓</div><div class="tr-text">Strategy 4</div></div>
+          <div class="tier-row"><div class="tr-ico y">✓</div><div class="tr-text">Strategy 5</div></div>
+          <div class="tier-row"><div class="tr-ico y">✓</div><div class="tr-text">Strategy 6</div></div>
+          <div class="tier-cat">Technology</div>
+          <div class="tier-row"><div class="tr-ico y">✓</div><div class="tr-text">Full HomegrownAssi website (all pages)</div></div>
+          <div class="tier-row"><div class="tr-ico y">✓</div><div class="tr-text">CRM & full automation pipeline</div></div>
+          <div class="tier-row"><div class="tr-ico y">✓</div><div class="tr-text">AI chatbot (website)</div></div>
+          <div class="tier-row"><div class="tr-ico n">–</div><div class="tr-text off">AI assistant (WhatsApp 24/7)</div></div>
+          <div class="tier-cat">Management</div>
+          <div class="tier-row"><div class="tr-ico y">✓</div><div class="tr-text">Dedicated growth partner</div></div>
+          <div class="tier-row"><div class="tr-ico y">✓</div><div class="tr-text">Monthly strategy calls</div></div>
+          <div class="tier-row"><div class="tr-ico y">✓</div><div class="tr-text">Email marketing & design</div></div>
+          <div class="tier-row"><div class="tr-ico y">✓</div><div class="tr-text">Brand partnership outreach</div></div>
+        </div>
+        <div class="tier-foot">
+          <div class="tier-potential">
+            <div class="tp-label">Monthly potential</div>
+            <div class="tp-amount">£25,000+/mo</div>
+            <div class="tp-note">Based on 6 strategies with your existing audience</div>
+          </div>
+          <a href="#cta" class="tier-cta tier-cta-solid">Most Popular — Get Started</a>
+        </div>
+      </div>
+
+      <!-- THE EMPIRE -->
+      <div class="tier-col premium">
+        <div class="tier-head">
+          <div class="tier-badge">The Empire — All 9 Strategies</div>
+          <div class="tier-name">Empire</div>
+          <div class="tier-setup">£18,000 setup</div>
+          <div class="tier-retainer">+ £1,497/month management</div>
+          <div class="tier-count"><span class="tc-num">9</span><span class="tc-txt">all strategies activated</span></div>
+        </div>
+        <div class="tier-body">
+          <div class="tier-cat">Lead Magnet</div>
+          <div class="tier-row"><div class="tr-ico y">✓</div><div class="tr-text">The Assi Edit — your digital magazine</div></div>
+          <div class="tier-row"><div class="tr-ico y">✓</div><div class="tr-text">Email capture + full nurture sequences</div></div>
+          <div class="tier-cat">All 9 Strategies</div>
+          <div class="tier-row"><div class="tr-ico y">✓</div><div class="tr-text">Kitchen Collection — <strong>digital recipe books</strong></div></div>
+          <div class="tier-row"><div class="tr-ico y">✓</div><div class="tr-text">Cook With Assi — <strong>signature course</strong></div></div>
+          <div class="tier-row"><div class="tr-ico y">✓</div><div class="tr-text">The Assi Method — <strong>group coaching</strong></div></div>
+          <div class="tier-row"><div class="tr-ico y">✓</div><div class="tr-text">The Homegrown Club — <strong>monthly membership</strong></div></div>
+          <div class="tier-row"><div class="tr-ico y">✓</div><div class="tr-text">Brand Deals — <strong>media kit + outreach</strong></div></div>
+          <div class="tier-row"><div class="tr-ico y">✓</div><div class="tr-text">Cook-Along Masterclass — <strong>quarterly live events</strong></div></div>
+          <div class="tier-row"><div class="tr-ico y">✓</div><div class="tr-text">Homegrown Merch — <strong>print-on-demand store</strong></div></div>
+          <div class="tier-row"><div class="tr-ico y">✓</div><div class="tr-text">Assi on YouTube — <strong>full channel setup</strong></div></div>
+          <div class="tier-row"><div class="tr-ico y">✓</div><div class="tr-text">Custom Strategy — <strong>built around your vision</strong></div></div>
+          <div class="tier-cat">Technology</div>
+          <div class="tier-row"><div class="tr-ico y">✓</div><div class="tr-text">Full website (all pages built)</div></div>
+          <div class="tier-row"><div class="tr-ico y">✓</div><div class="tr-text">CRM, automation & sales pipeline</div></div>
+          <div class="tier-row"><div class="tr-ico y">✓</div><div class="tr-text">AI chatbot (website)</div></div>
+          <div class="tier-row"><div class="tr-ico y">✓</div><div class="tr-text">AI assistant (WhatsApp, 24/7)</div></div>
+          <div class="tier-cat">Management</div>
+          <div class="tier-row"><div class="tr-ico y">✓</div><div class="tr-text">Dedicated growth partner</div></div>
+          <div class="tier-row"><div class="tr-ico y">✓</div><div class="tr-text">Monthly strategy calls</div></div>
+          <div class="tier-row"><div class="tr-ico y">✓</div><div class="tr-text">Email marketing & design</div></div>
+          <div class="tier-row"><div class="tr-ico y">✓</div><div class="tr-text">Brand partnership strategy & outreach</div></div>
+        </div>
+        <div class="tier-foot">
+          <div class="tier-potential">
+            <div class="tp-label">Monthly potential</div>
+            <div class="tp-amount">£47,000+/mo</div>
+            <div class="tp-note">All 9 strategies active with your 150k audience</div>
+          </div>
+          <a href="#cta" class="tier-cta tier-cta-dark">Get Started</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- RETAINER -->
+<section class="retainer-section">
+  <div class="container">
+    <div class="section-header" style="text-align:center">
+      <div class="ey reveal" style="justify-content:center"><div class="ey-line"></div><div class="ey-txt">What's in the Retainer</div><div class="ey-line"></div></div>
+      <h2 class="h2 reveal d1" style="text-align:center">Like a full team behind you —<br><em>without the payroll.</em></h2>
+      <p class="body-t reveal d2" style="text-align:center;max-width:480px;margin:12px auto 0;color:rgba(255,255,255,0.6)">Every client gets an active ongoing partnership. The retainer keeps your entire business running and growing month after month.</p>
+    </div>
+    <div class="ret-cards">
+      <div class="ret-card reveal">
+        <div class="ret-icon">📧</div>
+        <div class="ret-title">Email Marketing</div>
+        <div class="ret-text">Monthly campaigns written, designed and sent. Your audience nurtured on autopilot every single month.</div>
+      </div>
+      <div class="ret-card reveal d1">
+        <div class="ret-icon">🌐</div>
+        <div class="ret-title">Website Management</div>
+        <div class="ret-text">All updates, new pages, product launches and tech maintenance handled. You never touch the backend.</div>
+      </div>
+      <div class="ret-card reveal d2">
+        <div class="ret-icon">🤖</div>
+        <div class="ret-title">AI & Automation</div>
+        <div class="ret-text">Your chatbot trained, your automation flows optimised, your leads captured and nurtured 24/7.</div>
+      </div>
+      <div class="ret-card reveal d3">
+        <div class="ret-icon">📊</div>
+        <div class="ret-title">Strategy & Growth</div>
+        <div class="ret-text">Monthly calls to review performance and plan the next move. We actively grow your platform — not just maintain it.</div>
+      </div>
+    </div>
+    <div class="ret-note reveal d4">
+      <div class="rn-icon">🤝</div>
+      <div class="rn-text"><strong>We're with you the whole way.</strong> We don't build your business and disappear. Every client gets a real ongoing partnership — regular strategy calls, monthly performance reviews and a team that treats your business like their own. We consult on your offers, your audience, your content. We help you think through what to launch next, how to grow the membership, how to attract the right brand deals. <strong>We are your growth partner — not just an agency.</strong> The retainer covers all running costs — CRM, design tools, email platform — but what you're really buying is a dedicated team invested in your growth.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ROI -->
+<section class="roi-section" id="roi">
+  <div class="container">
+    <div class="ey reveal" style="justify-content:center"><div class="ey-line"></div><div class="ey-txt">The Numbers</div><div class="ey-line"></div></div>
+    <h2 class="h2 reveal d1" style="text-align:center">What this looks like<br><em>in real income.</em></h2>
+    <p class="body-t reveal d2" style="text-align:center;max-width:500px;margin:12px auto 0">Conservative projections based on your existing audience. All numbers assume 2% conversion of your current 150k follower base.</p>
+    <div class="roi-tabs reveal d3">
+      <button class="roi-tab active" onclick="switchTab('homegrown',this)">Homegrown — £6k</button>
+      <button class="roi-tab" onclick="switchTab('brand',this)">The Brand — £10k</button>
+      <button class="roi-tab" onclick="switchTab('empire',this)">Empire — £18k</button>
+    </div>
+
+    <!-- HOMEGROWN TAB -->
+    <div class="roi-panel active" id="tab-homegrown">
+      <div>
+        <div class="rsc-head">
+          <div class="rsc-title">The Homegrown — 3 Strategies</div>
+          <div class="rsc-sub">Setup: £6,000 · Management: £797/month</div>
+        </div>
+        <div class="rsc-streams">
+          <div class="rs"><div><div class="rs-name">📖 Kitchen Collection</div><div class="rs-note">Digital recipe books + meal plans</div></div><div class="rs-amount">£1,400/mo</div></div>
+          <div class="rs"><div><div class="rs-name">🎓 Cook With Assi</div><div class="rs-note">Mid + high ticket course</div></div><div class="rs-amount">£5,000/mo</div></div>
+          <div class="rs"><div><div class="rs-name">🤝 Brand Deals</div><div class="rs-note">Media kit + outreach</div></div><div class="rs-amount">Building</div></div>
+          <div class="rs locked"><div><div class="rs-name">👩‍🍳 Homegrown Club</div><div class="rs-note">Not included in this package</div></div><div class="rs-amount">£29,000/mo</div></div>
+          <div class="rs locked"><div><div class="rs-name">💛 The Assi Method</div><div class="rs-note">Not included in this package</div></div><div class="rs-amount">£3,940/mo</div></div>
+        </div>
+        <div class="rsc-total">
+          <span class="rsc-total-label">Monthly potential</span>
+          <span class="rsc-total-amount">£6,400+/mo</span>
+        </div>
+      </div>
+      <div class="ri-box">
+        <div class="ri-title">What this means for you</div>
+        <div class="ri-points">
+          <div class="ri-point"><div class="ri-dot"></div><div>The £6,000 investment is recovered in <strong>under 1 month</strong> — everything after is profit</div></div>
+          <div class="ri-point"><div class="ri-dot"></div><div>Your courses and recipe books run <strong>24/7 with no extra effort</strong> from you</div></div>
+          <div class="ri-point"><div class="ri-dot"></div><div>Brand partnerships begin <strong>building from day one</strong> with a professional media kit</div></div>
+          <div class="ri-point"><div class="ri-dot"></div><div>This is a real business <strong>running alongside your content</strong> — you just keep being Assi</div></div>
+        </div>
+        <div class="ri-avail">
+          <div class="ria-label">Available in Brand & Empire</div>
+          <div class="ria-text">Upgrading unlocks the Homegrown Club membership — which alone at 1,000 members adds £29,000/month in recurring income. The membership is where the real wealth is built.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BRAND TAB -->
+    <div class="roi-panel" id="tab-brand">
+      <div>
+        <div class="rsc-head">
+          <div class="rsc-title">The Brand — 6 Strategies</div>
+          <div class="rsc-sub">Setup: £10,000 · Management: £997/month</div>
+        </div>
+        <div class="rsc-streams">
+          <div class="rs"><div><div class="rs-name">📖 Kitchen Collection</div><div class="rs-note">Full digital product range</div></div><div class="rs-amount">£1,400/mo</div></div>
+          <div class="rs"><div><div class="rs-name">🎓 Cook With Assi</div><div class="rs-note">Mid + high ticket</div></div><div class="rs-amount">£5,000/mo</div></div>
+          <div class="rs"><div><div class="rs-name">👩‍🍳 Homegrown Club</div><div class="rs-note">Monthly membership community</div></div><div class="rs-amount">£14,500/mo avg</div></div>
+          <div class="rs"><div><div class="rs-name">💛 The Assi Method</div><div class="rs-note">20 members × £197/mo</div></div><div class="rs-amount">£3,940/mo</div></div>
+          <div class="rs"><div><div class="rs-name">🤝 Brand Deals</div><div class="rs-note">2–3 deals/month</div></div><div class="rs-amount">£5,000/mo</div></div>
+          <div class="rs"><div><div class="rs-name">🎤 Cook-Along Masterclass</div><div class="rs-note">£4,700/quarter ÷ 3 months</div></div><div class="rs-amount">£1,566/mo avg</div></div>
+          <div class="rs locked"><div><div class="rs-name">🛒 Merch + YouTube</div><div class="rs-note">Not included in this package</div></div><div class="rs-amount">£4,000+/mo</div></div>
+        </div>
+        <div class="rsc-total">
+          <span class="rsc-total-label">Monthly potential</span>
+          <span class="rsc-total-amount">£31,406+/mo</span>
+        </div>
+      </div>
+      <div class="ri-box">
+        <div class="ri-title">What this means for you</div>
+        <div class="ri-points">
+          <div class="ri-point"><div class="ri-dot"></div><div>The £10,000 investment is recovered in <strong>under 2 weeks</strong> at these numbers</div></div>
+          <div class="ri-point"><div class="ri-dot"></div><div>The Homegrown Club creates <strong>predictable recurring income</strong> — you know your earnings before the month starts</div></div>
+          <div class="ri-point"><div class="ri-dot"></div><div>Brand deals compound as your <strong>professional positioning grows</strong> — rates go up, not down</div></div>
+          <div class="ri-point"><div class="ri-dot"></div><div><strong>Year one potential: £376,872</strong> — at these conservative numbers</div></div>
+        </div>
+        <div class="ri-avail">
+          <div class="ria-label">Available in Empire</div>
+          <div class="ria-text">Adding merch, YouTube and your custom strategy unlocks a further £4,000–£10,000+/month and builds long-term assets that compound for years. The upgrade pays for itself in weeks.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EMPIRE TAB -->
+    <div class="roi-panel" id="tab-empire">
+      <div>
+        <div class="rsc-head">
+          <div class="rsc-title">The Empire — All 9 Strategies</div>
+          <div class="rsc-sub">Setup: £18,000 · Management: £1,497/month</div>
+        </div>
+        <div class="rsc-streams">
+          <div class="rs"><div><div class="rs-name">📖 Kitchen Collection</div><div class="rs-note">Full digital product range</div></div><div class="rs-amount">£1,400/mo</div></div>
+          <div class="rs"><div><div class="rs-name">🎓 Cook With Assi</div><div class="rs-note">Mid + high ticket</div></div><div class="rs-amount">£5,000/mo</div></div>
+          <div class="rs"><div><div class="rs-name">👩‍🍳 Homegrown Club</div><div class="rs-note">1,000 members × £29/mo (scaled)</div></div><div class="rs-amount">£14,500/mo</div></div>
+          <div class="rs"><div><div class="rs-name">💛 The Assi Method</div><div class="rs-note">20 members × £197/mo</div></div><div class="rs-amount">£3,940/mo</div></div>
+          <div class="rs"><div><div class="rs-name">🤝 Brand Deals</div><div class="rs-note">Premium media kit + active outreach</div></div><div class="rs-amount">£7,500/mo</div></div>
+          <div class="rs"><div><div class="rs-name">🎤 Masterclass</div><div class="rs-note">£4,700/quarter ÷ 3 months</div></div><div class="rs-amount">£1,566/mo</div></div>
+          <div class="rs"><div><div class="rs-name">🛒 Homegrown Merch</div><div class="rs-note">Print-on-demand store</div></div><div class="rs-amount">£2,000/mo</div></div>
+          <div class="rs"><div><div class="rs-name">🎬 YouTube</div><div class="rs-note">Ad revenue + affiliate links</div></div><div class="rs-amount">Building</div></div>
+          <div class="rs"><div><div class="rs-name">✦ Custom Strategy</div><div class="rs-note">Bespoke to your vision</div></div><div class="rs-amount">TBD</div></div>
+        </div>
+        <div class="rsc-total">
+          <span class="rsc-total-label">Monthly potential</span>
+          <span class="rsc-total-amount">£35,906+/mo</span>
+        </div>
+      </div>
+      <div class="ri-box">
+        <div class="ri-title">What this means for you</div>
+        <div class="ri-points">
+          <div class="ri-point"><div class="ri-dot"></div><div>All 9 strategies live from day one — <strong>nothing left on the table</strong></div></div>
+          <div class="ri-point"><div class="ri-dot"></div><div><strong>Year one potential: £430,872+</strong> — at these conservative numbers</div></div>
+          <div class="ri-point"><div class="ri-dot"></div><div>The Homegrown Club alone <strong>covers your management fee 9x over</strong> every month</div></div>
+          <div class="ri-point"><div class="ri-dot"></div><div>Every strategy feeds the others — your reels fill the course, the course feeds the club, the club attracts better brand deals</div></div>
+        </div>
+        <div class="ri-avail">
+          <div class="ria-label">The Full Picture</div>
+          <div class="ria-text">This is the complete HomegrownAssi Business. Every strategy live, every system automated, every avenue of income open. You already have the audience — this is just building the business around what you've already created.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUILD -->
+<section class="build-section">
+  <div class="container">
+    <div class="section-header" style="text-align:center">
+      <div class="ey reveal" style="justify-content:center"><div class="ey-line"></div><div class="ey-txt">What We Build for You</div><div class="ey-line"></div></div>
+      <h2 class="h2 reveal d1" style="text-align:center">Everything built.<br><em>Everything managed. You just show up.</em></h2>
+    </div>
+    <div class="build-grid">
+      <div class="build-item reveal">
+        <div class="bi-icon">🌐</div>
+        <div class="bi-title">Your HomegrownAssi Website</div>
+        <div class="bi-text">A premium home base with your story, brand, recipes and CTAs to every offering. Designed to feel like you — warm, real, aspirational. Built to convert visitors into subscribers, customers and community members.</div>
+      </div>
+      <div class="build-item reveal d1">
+        <div class="bi-icon">🎓</div>
+        <div class="bi-title">Digital Products & Courses</div>
+        <div class="bi-text">We build your recipe books, meal plans and courses directly from your content and cooking style. Assets built once that generate income forever — your reels become a product suite.</div>
+      </div>
+      <div class="build-item reveal d2">
+        <div class="bi-icon">📧</div>
+        <div class="bi-title">Email Marketing & Automation</div>
+        <div class="bi-text">Every follower captured, every lead tagged, every sequence automated. Monthly campaigns written and designed in-house. Your audience nurtured on autopilot while your list grows.</div>
+      </div>
+      <div class="build-item reveal">
+        <div class="bi-icon">🤖</div>
+        <div class="bi-title">AI Customer Service</div>
+        <div class="bi-text">A 24/7 AI assistant trained on your brand and offerings. Answers recipe questions, handles course enquiries and captures leads around the clock — even while you sleep.</div>
+      </div>
+      <div class="build-item reveal d1">
+        <div class="bi-icon">👩‍🍳</div>
+        <div class="bi-title">Membership & Event Management</div>
+        <div class="bi-text">We handle every aspect of your Homegrown Club and Cook-Along events — registration, payments, reminder sequences and member management. You show up and cook. We run everything else.</div>
+      </div>
+      <div class="build-item reveal d2">
+        <div class="bi-icon">🤝</div>
+        <div class="bi-title">Brand Partnership Strategy</div>
+        <div class="bi-text">A premium media kit, rate card and active outreach to food, kitchen, lifestyle and fashion brands relevant to your audience. We position you as a premium creator and attract deals at your value — not below it.</div>
+      </div>
+      <div class="build-item reveal">
+        <div class="bi-icon">⚙️</div>
+        <div class="bi-title">CRM & Sales Pipeline</div>
+        <div class="bi-text">Every lead captured, tagged and nurtured. Your pipeline managed automatically — from first follower to paid customer to loyal community member.</div>
+      </div>
+      <div class="build-item reveal d1">
+        <div class="bi-icon">📈</div>
+        <div class="bi-title">Ongoing Management</div>
+        <div class="bi-text">Monthly retainer covers all updates, optimisation, strategy and full tech support. You never touch the backend. You focus on your content — we handle everything else.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process-section">
+  <div class="container">
+    <div class="section-header" style="text-align:center">
+      <div class="ey reveal" style="justify-content:center"><div class="ey-line"></div><div class="ey-txt">How It Works</div><div class="ey-line"></div></div>
+      <h2 class="h2 reveal d1" style="text-align:center">From conversation to<br><em>live business in 4 weeks.</em></h2>
+    </div>
+    <div class="process-steps">
+      <div class="ps reveal">
+        <div class="ps-num">1</div>
+        <div class="ps-title">Strategy Call</div>
+        <div class="ps-text">We learn your brand, your audience and your goals. We map exactly which strategies to activate first and build your selection together.</div>
+        <div class="ps-time">Week 1</div>
+      </div>
+      <div class="ps reveal d1">
+        <div class="ps-num">2</div>
+        <div class="ps-title">Build Phase</div>
+        <div class="ps-text">Website, products, courses, automation, magazine and AI — all built in parallel by our team while you carry on with your life.</div>
+        <div class="ps-time">Weeks 2–4</div>
+      </div>
+      <div class="ps reveal d2">
+        <div class="ps-num">3</div>
+        <div class="ps-title">Review & Launch</div>
+        <div class="ps-text">You review everything, we refine it. Then we go live — all strategies open, your HomegrownAssi business live and earning from day one.</div>
+        <div class="ps-time">End of Week 4</div>
+      </div>
+      <div class="ps reveal d3">
+        <div class="ps-num">4</div>
+        <div class="ps-title">Ongoing Growth</div>
+        <div class="ps-text">Monthly retainer keeps everything running, growing and optimised. You focus on being Assi — we handle everything behind the scenes.</div>
+        <div class="ps-time">Month 2+</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="cta">
+  <div class="container">
+    <div class="ey reveal" style="justify-content:center"><div class="ey-line"></div><div class="ey-txt">Ready to Begin?</div><div class="ey-line"></div></div>
+    <h2 class="h2 reveal d1">Your audience is already there.<br><em>Let's build the business around it.</em></h2>
+    <p class="body-t reveal d2">Book a 30-minute discovery call with the Zorian team. We'll walk through your brand, your audience and which strategies are the right starting point for the HomegrownAssi business.</p>
+    <div class="cta-btns reveal d3">
+      <a href="mailto:hello@zorian.ai" class="btn-white">Book a Discovery Call</a>
+      <a href="mailto:hello@zorian.ai" class="btn-outline-lt">Send an Enquiry</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Prepared exclusively for Marie Assi · HomegrownAssi · Zorian AI — zorian.ai</p>
+</footer>
+
+<script>
+// Reveal on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Tab switching
+function switchTab(name, btn) {
+  document.querySelectorAll('.roi-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.roi-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>
