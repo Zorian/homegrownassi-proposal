@@ -351,6 +351,11 @@ nav {
   position: absolute; inset: 0;
   background: linear-gradient(160deg, var(--terra-pale) 0%, var(--cream-dark) 60%, var(--cream) 100%);
 }
+.mm-photo {
+  position: absolute; inset: 0;
+  background: url('assi.jpg') center 15% / cover no-repeat;
+  opacity: 0.35;
+}
 .mm-content { position: relative; z-index: 1; padding: 28px 22px; height: 100%; display: flex; flex-direction: column; }
 .mm-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: auto; }
 .mm-brand {
@@ -960,7 +965,9 @@ footer {
       <!-- Magazine mock -->
       <div class="mag-mock reveal d2">
         <div class="mm-bg"></div>
-        <div class="mm-content">
+        <div class="mm-photo"></div>
+        <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(250,246,240,0.97) 35%, rgba(250,246,240,0.4) 65%, rgba(250,246,240,0.15) 100%);z-index:1;"></div>
+        <div class="mm-content" style="z-index:2;">
           <div class="mm-top">
             <div class="mm-brand">Assi Edit</div>
             <div class="mm-issue">Issue 01<br>2025</div>
